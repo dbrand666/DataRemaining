@@ -1,0 +1,272 @@
+<TaskerData sr="" dvi="1" tv="5.15.14">
+	<Profile sr="prof5" ve="2">
+		<cdate>1651786301812</cdate>
+		<edate>1652730989412</edate>
+		<flags>8</flags>
+		<id>5</id>
+		<mid0>28</mid0>
+		<nme>Data Remaining</nme>
+		<Time sr="con0">
+			<fh>-1</fh>
+			<fm>-1</fm>
+			<rep>2</rep>
+			<repval>15</repval>
+			<th>-1</th>
+			<tm>-1</tm>
+		</Time>
+	</Profile>
+	<Project sr="proj0" ve="2">
+		<cdate>1513568609886</cdate>
+		<name>Data Remaining</name>
+		<pids>5</pids>
+		<tids>28,31</tids>
+		<Kid sr="Kid">
+			<launchID>28</launchID>
+			<pkg>com.mobilescalability.data_remaining</pkg>
+			<vTarg>29</vTarg>
+			<vnme>1.0</vnme>
+			<vnum>3</vnum>
+		</Kid>
+		<Img sr="icon" ve="2">
+			<nme>mw_action_settings_cell</nme>
+		</Img>
+	</Project>
+	<Task sr="task28">
+		<cdate>1651786310248</cdate>
+		<edate>1652730989412</edate>
+		<id>28</id>
+		<nme>Data Remaining</nme>
+		<pri>100</pri>
+		<Action sr="act0" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">Initialize</Str>
+			<Int sr="arg1">
+				<var>%priority+1</var>
+			</Int>
+			<Int sr="arg10" val="1"/>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<Int sr="arg6" val="0"/>
+			<Str sr="arg7" ve="3"/>
+			<Int sr="arg8" val="0"/>
+			<Int sr="arg9" val="0"/>
+			<ConditionList sr="if">
+				<bool0>Or</bool0>
+				<Condition sr="c0" ve="3">
+					<lhs>%POOL_ID</lhs>
+					<op>13</op>
+					<rhs></rhs>
+				</Condition>
+				<Condition sr="c1" ve="3">
+					<lhs>%WARN_AT</lhs>
+					<op>13</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>339</code>
+			<Bundle sr="arg0">
+				<Vals sr="val">
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES>&lt;StringArray sr=""&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;%http_cookies
+Cookies
+The cookies the server sent in the response in the Cookie:COOKIE_VALUE format. You can use this directly in the 'Headers' field of the HTTP Request action&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES1&gt;%http_data
+Data
+Data that the server responded from the HTTP request.&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES1&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;%http_file_output
+File Output
+Will always contain the file's full path even if you specified a directory as the File to save.&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES3&gt;%http_response_code
+Response Code
+The HTTP Code the server responded&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES3&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES4&gt;%http_headers()
+Response Headers
+The HTTP Headers the server sent in the response. Each header is in the 'key:value' format&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES4&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES5&gt;%http_response_length
+Response Length
+The size of the response in bytes&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES5&gt;&lt;/StringArray&gt;</net.dinglisch.android.tasker.RELEVANT_VARIABLES>
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>[Ljava.lang.String;</net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>
+				</Vals>
+			</Bundle>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg10" val="0"/>
+			<Int sr="arg11" val="0"/>
+			<Int sr="arg12" val="1"/>
+			<Str sr="arg2" ve="3">https://api.usmobile.com/api/v1/pools/%POOL_ID </Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Int sr="arg8" val="30"/>
+			<Int sr="arg9" val="0"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>129</code>
+			<Str sr="arg0" ve="3">const data = JSON.parse(http_data);
+
+var days_remaining = Math.floor((convert(data.renewsOn, 'datetimeToSec') - Date.now() / 1000) / 60 / 60 /24);
+
+var data_remaining = (data.balanceInMB / 1024).toFixed(2)</Str>
+			<Str sr="arg1" ve="3"/>
+			<Int sr="arg2" val="1"/>
+			<Int sr="arg3" val="45"/>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>779</code>
+			<Str sr="arg0" ve="3">US Mobile Data Remaining</Str>
+			<Int sr="arg1" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%data_remaining</lhs>
+					<op>6</op>
+					<rhs>%WARN_AT</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>779</code>
+			<Str sr="arg0" ve="3">US Mobile Data Alert</Str>
+			<Int sr="arg1" val="0"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%data_remaining</lhs>
+					<op>7</op>
+					<rhs>%WARN_AT</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>523</code>
+			<Str sr="arg0" ve="3">US Mobile Data Remaining</Str>
+			<Str sr="arg1" ve="3">%data_remaining GB, %days_remaining days</Str>
+			<Str sr="arg10" ve="3"/>
+			<Str sr="arg11" ve="3">US Mobile Data Remaining</Str>
+			<Img sr="arg2" ve="2">
+				<nme>mw_action_settings_cell</nme>
+			</Img>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Int sr="arg5" val="5"/>
+			<Int sr="arg6" val="0"/>
+			<Int sr="arg7" val="0"/>
+			<Int sr="arg8" val="0"/>
+			<Str sr="arg9" ve="3"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%data_remaining</lhs>
+					<op>7</op>
+					<rhs>%WARN_AT</rhs>
+				</Condition>
+			</ConditionList>
+			<ListElementItem sr="item0">
+				<label></label>
+			</ListElementItem>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>523</code>
+			<Str sr="arg0" ve="3">US Mobile Data Alert</Str>
+			<Str sr="arg1" ve="3">%data_remaining GB, %days_remaining days</Str>
+			<Str sr="arg10" ve="3"/>
+			<Str sr="arg11" ve="3">US Mobile Data Alert</Str>
+			<Img sr="arg2" ve="2">
+				<nme>mw_action_settings_cell</nme>
+			</Img>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Int sr="arg5" val="1"/>
+			<Int sr="arg6" val="0"/>
+			<Int sr="arg7" val="0"/>
+			<Int sr="arg8" val="0"/>
+			<Str sr="arg9" ve="3"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%data_remaining</lhs>
+					<op>6</op>
+					<rhs>%WARN_AT</rhs>
+				</Condition>
+			</ConditionList>
+			<ListElementItem sr="item0">
+				<label></label>
+			</ListElementItem>
+		</Action>
+	</Task>
+	<Task sr="task31">
+		<cdate>1652730240967</cdate>
+		<edate>1652730718875</edate>
+		<id>31</id>
+		<nme>Initialize</nme>
+		<pri>100</pri>
+		<Action sr="act0" ve="7">
+			<code>360</code>
+			<Bundle sr="arg0">
+				<Vals sr="val">
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES>&lt;StringArray sr=""&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;%input
+Input
+The text that was inserted in the dialog&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;&lt;/StringArray&gt;</net.dinglisch.android.tasker.RELEVANT_VARIABLES>
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>[Ljava.lang.String;</net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>
+				</Vals>
+			</Bundle>
+			<Str sr="arg1" ve="3">Pool ID</Str>
+			<Str sr="arg2" ve="3">Log into USMobile, select the pool you want to monitor and get the pool ID from the URL.</Str>
+			<Str sr="arg3" ve="3">%POOL_ID</Str>
+			<Int sr="arg4" val="120"/>
+			<Str sr="arg5" ve="3">524289</Str>
+			<Int sr="arg6" val="0"/>
+			<Int sr="arg7" val="0"/>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%POOL_ID</Str>
+			<Str sr="arg1" ve="3">%input</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Int sr="arg5" val="3"/>
+			<Int sr="arg6" val="1"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%WARN_AT</Str>
+			<Str sr="arg1" ve="3">0.5</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Int sr="arg5" val="3"/>
+			<Int sr="arg6" val="1"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%WARN_AT</lhs>
+					<op>13</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>360</code>
+			<Bundle sr="arg0">
+				<Vals sr="val">
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES>&lt;StringArray sr=""&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;%input
+Input
+The text that was inserted in the dialog&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;&lt;/StringArray&gt;</net.dinglisch.android.tasker.RELEVANT_VARIABLES>
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>[Ljava.lang.String;</net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>
+				</Vals>
+			</Bundle>
+			<Str sr="arg1" ve="3">Data remaining threshold (GB)</Str>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3">%WARN_AT</Str>
+			<Int sr="arg4" val="120"/>
+			<Str sr="arg5" ve="3">12290</Str>
+			<Int sr="arg6" val="0"/>
+			<Int sr="arg7" val="0"/>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%WARN_AT</Str>
+			<Str sr="arg1" ve="3">%input</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Int sr="arg5" val="3"/>
+			<Int sr="arg6" val="1"/>
+		</Action>
+	</Task>
+</TaskerData>
