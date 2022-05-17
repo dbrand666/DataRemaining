@@ -1,7 +1,8 @@
 <TaskerData sr="" dvi="1" tv="5.15.14">
 	<Profile sr="prof5" ve="2">
 		<cdate>1651786301812</cdate>
-		<edate>1652730989412</edate>
+		<clp>true</clp>
+		<edate>1652823933526</edate>
 		<flags>8</flags>
 		<id>5</id>
 		<mid0>28</mid0>
@@ -19,13 +20,13 @@
 		<cdate>1513568609886</cdate>
 		<name>Data Remaining</name>
 		<pids>5</pids>
-		<tids>28,31</tids>
+		<tids>31,28</tids>
 		<Kid sr="Kid">
 			<launchID>28</launchID>
 			<pkg>com.mobilescalability.data_remaining</pkg>
 			<vTarg>29</vTarg>
 			<vnme>1.0</vnme>
-			<vnum>3</vnum>
+			<vnum>5</vnum>
 		</Kid>
 		<Img sr="icon" ve="2">
 			<nme>mw_action_settings_cell</nme>
@@ -33,10 +34,10 @@
 	</Project>
 	<Task sr="task28">
 		<cdate>1651786310248</cdate>
-		<edate>1652730989412</edate>
+		<edate>1652823927779</edate>
 		<id>28</id>
 		<nme>Data Remaining</nme>
-		<pri>100</pri>
+		<pri>6</pri>
 		<Action sr="act0" ve="7">
 			<code>130</code>
 			<Str sr="arg0" ve="3">Initialize</Str>
@@ -54,6 +55,7 @@
 			<Int sr="arg9" val="0"/>
 			<ConditionList sr="if">
 				<bool0>Or</bool0>
+				<bool1>Or</bool1>
 				<Condition sr="c0" ve="3">
 					<lhs>%POOL_ID</lhs>
 					<op>13</op>
@@ -61,6 +63,11 @@
 				</Condition>
 				<Condition sr="c1" ve="3">
 					<lhs>%WARN_AT</lhs>
+					<op>13</op>
+					<rhs></rhs>
+				</Condition>
+				<Condition sr="c2" ve="3">
+					<lhs>%TOKEN</lhs>
 					<op>13</op>
 					<rhs></rhs>
 				</Condition>
@@ -91,7 +98,7 @@ The size of the response in bytes&lt;/_array_net.dinglisch.android.tasker.RELEVA
 			<Int sr="arg11" val="0"/>
 			<Int sr="arg12" val="1"/>
 			<Str sr="arg2" ve="3">https://api.usmobile.com/api/v1/pools/%POOL_ID </Str>
-			<Str sr="arg3" ve="3"/>
+			<Str sr="arg3" ve="3">USMAuthorization:Bearer %TOKEN</Str>
 			<Str sr="arg4" ve="3"/>
 			<Str sr="arg5" ve="3"/>
 			<Str sr="arg6" ve="3"/>
@@ -188,14 +195,45 @@ var data_remaining = (data.balanceInMB / 1024).toFixed(2)</Str>
 				<label></label>
 			</ListElementItem>
 		</Action>
+		<Img sr="icn" ve="2">
+			<nme>hl_hardware_phone</nme>
+		</Img>
 	</Task>
 	<Task sr="task31">
 		<cdate>1652730240967</cdate>
-		<edate>1652730718875</edate>
+		<edate>1652823890445</edate>
 		<id>31</id>
 		<nme>Initialize</nme>
 		<pri>100</pri>
 		<Action sr="act0" ve="7">
+			<code>360</code>
+			<Bundle sr="arg0">
+				<Vals sr="val">
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES>&lt;StringArray sr=""&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;%input
+Input
+The text that was inserted in the dialog&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;&lt;/StringArray&gt;</net.dinglisch.android.tasker.RELEVANT_VARIABLES>
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>[Ljava.lang.String;</net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>
+				</Vals>
+			</Bundle>
+			<Str sr="arg1" ve="3">jwtToken</Str>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3">%TOKEN</Str>
+			<Int sr="arg4" val="120"/>
+			<Str sr="arg5" ve="3">524417</Str>
+			<Int sr="arg6" val="0"/>
+			<Int sr="arg7" val="1"/>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>547</code>
+			<Str sr="arg0" ve="3">%TOKEN</Str>
+			<Str sr="arg1" ve="3">%input</Str>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+			<Int sr="arg4" val="0"/>
+			<Int sr="arg5" val="3"/>
+			<Int sr="arg6" val="1"/>
+		</Action>
+		<Action sr="act2" ve="7">
 			<code>360</code>
 			<Bundle sr="arg0">
 				<Vals sr="val">
@@ -213,7 +251,7 @@ The text that was inserted in the dialog&lt;/_array_net.dinglisch.android.tasker
 			<Int sr="arg6" val="0"/>
 			<Int sr="arg7" val="0"/>
 		</Action>
-		<Action sr="act1" ve="7">
+		<Action sr="act3" ve="7">
 			<code>547</code>
 			<Str sr="arg0" ve="3">%POOL_ID</Str>
 			<Str sr="arg1" ve="3">%input</Str>
@@ -223,7 +261,7 @@ The text that was inserted in the dialog&lt;/_array_net.dinglisch.android.tasker
 			<Int sr="arg5" val="3"/>
 			<Int sr="arg6" val="1"/>
 		</Action>
-		<Action sr="act2" ve="7">
+		<Action sr="act4" ve="7">
 			<code>547</code>
 			<Str sr="arg0" ve="3">%WARN_AT</Str>
 			<Str sr="arg1" ve="3">0.5</Str>
@@ -240,7 +278,7 @@ The text that was inserted in the dialog&lt;/_array_net.dinglisch.android.tasker
 				</Condition>
 			</ConditionList>
 		</Action>
-		<Action sr="act3" ve="7">
+		<Action sr="act5" ve="7">
 			<code>360</code>
 			<Bundle sr="arg0">
 				<Vals sr="val">
@@ -258,7 +296,7 @@ The text that was inserted in the dialog&lt;/_array_net.dinglisch.android.tasker
 			<Int sr="arg6" val="0"/>
 			<Int sr="arg7" val="0"/>
 		</Action>
-		<Action sr="act4" ve="7">
+		<Action sr="act6" ve="7">
 			<code>547</code>
 			<Str sr="arg0" ve="3">%WARN_AT</Str>
 			<Str sr="arg1" ve="3">%input</Str>
